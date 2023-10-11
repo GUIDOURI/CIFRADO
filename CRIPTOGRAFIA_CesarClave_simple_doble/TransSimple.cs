@@ -16,5 +16,10 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         {
             InitializeComponent();
         }
+
+        private void TransSimple_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
