@@ -34,15 +34,15 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    string filePath = saveFileDialog.FileName;
+
+                    if (GuardarAbrirTXT.GuardarComoTexto(encryptedMessage, filePath))
                     {
-                        string filePath = saveFileDialog.FileName;
-                        File.WriteAllText(filePath, encryptedMessage);
                         MessageBox.Show("El cifrado se guardó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("No se pudo guardar el cifrado. Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No se pudo guardar el cifrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
