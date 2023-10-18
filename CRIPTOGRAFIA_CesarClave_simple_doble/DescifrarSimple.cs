@@ -32,16 +32,11 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedFile = openFileDialog.FileName;
+                    string fileContent = GuardarAbrirTXT.AbrirComoTexto(selectedFile);
 
-                    // Lee el contenido del archivo seleccionado y colócalo en el TextBox de mensaje cifrado
-                    try
+                    if (!string.IsNullOrEmpty(fileContent))
                     {
-                        string fileContent = File.ReadAllText(selectedFile);
                         txtCipherText.Text = fileContent;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al cargar el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
