@@ -6,5 +6,11 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TransSimple transSimple = new TransSimple();
+            transSimple.Show();
+        }
     }
 }

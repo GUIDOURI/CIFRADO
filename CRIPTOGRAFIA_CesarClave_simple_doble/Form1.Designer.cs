@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             panelMenu = new Panel();
-            button1 = new Button();
-            button2 = new Button();
             button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             panelContenedor = new Panel();
             panelMenu.SuspendLayout();
             SuspendLayout();
@@ -49,14 +49,14 @@
             panelMenu.Size = new Size(257, 465);
             panelMenu.TabIndex = 3;
             // 
-            // button1
+            // button3
             // 
-            button1.Location = new Point(0, 140);
-            button1.Name = "button1";
-            button1.Size = new Size(257, 84);
-            button1.TabIndex = 4;
-            button1.Text = "Transposicion Simple";
-            button1.UseVisualStyleBackColor = true;
+            button3.Location = new Point(0, 354);
+            button3.Name = "button3";
+            button3.Size = new Size(257, 84);
+            button3.TabIndex = 6;
+            button3.Text = "Cifrado Del Cesar por Palabra Clave";
+            button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -67,14 +67,15 @@
             button2.Text = "Transposicion Doble";
             button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button1
             // 
-            button3.Location = new Point(0, 354);
-            button3.Name = "button3";
-            button3.Size = new Size(257, 84);
-            button3.TabIndex = 6;
-            button3.Text = "Cifrado Del Cesar por Palabra Clave";
-            button3.UseVisualStyleBackColor = true;
+            button1.Location = new Point(0, 140);
+            button1.Name = "button1";
+            button1.Size = new Size(257, 84);
+            button1.TabIndex = 4;
+            button1.Text = "Transposicion Simple";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panelContenedor
             // 
