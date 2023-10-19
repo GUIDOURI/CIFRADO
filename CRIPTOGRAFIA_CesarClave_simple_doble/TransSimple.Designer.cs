@@ -44,10 +44,9 @@
             // btnEncrypt
             // 
             btnEncrypt.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEncrypt.Location = new Point(363, 270);
-            btnEncrypt.Margin = new Padding(3, 4, 3, 4);
+            btnEncrypt.Location = new Point(318, 202);
             btnEncrypt.Name = "btnEncrypt";
-            btnEncrypt.Size = new Size(190, 55);
+            btnEncrypt.Size = new Size(166, 41);
             btnEncrypt.TabIndex = 0;
             btnEncrypt.Text = "CIFRAR";
             btnEncrypt.UseVisualStyleBackColor = true;
@@ -57,45 +56,42 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(14, 28);
+            label1.Location = new Point(12, 21);
             label1.Name = "label1";
-            label1.Size = new Size(236, 28);
+            label1.Size = new Size(194, 21);
             label1.TabIndex = 1;
             label1.Text = "PALABRA PARA CIFRAR";
             // 
             // txtOriginal
             // 
-            txtOriginal.Location = new Point(14, 75);
-            txtOriginal.Margin = new Padding(3, 4, 3, 4);
+            txtOriginal.Location = new Point(12, 56);
             txtOriginal.Name = "txtOriginal";
-            txtOriginal.Size = new Size(443, 27);
+            txtOriginal.Size = new Size(388, 23);
             txtOriginal.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(55, 132);
+            label2.Location = new Point(48, 99);
             label2.Name = "label2";
-            label2.Size = new Size(255, 28);
+            label2.Size = new Size(209, 21);
             label2.TabIndex = 3;
             label2.Text = "RESULTADO DE CIFRADO";
             // 
             // txtEncrypted
             // 
-            txtEncrypted.Location = new Point(83, 185);
-            txtEncrypted.Margin = new Padding(3, 4, 3, 4);
+            txtEncrypted.Location = new Point(73, 139);
             txtEncrypted.Name = "txtEncrypted";
-            txtEncrypted.Size = new Size(443, 27);
+            txtEncrypted.Size = new Size(388, 23);
             txtEncrypted.TabIndex = 4;
             // 
             // button2
             // 
             button2.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(353, 391);
-            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Location = new Point(309, 293);
             button2.Name = "button2";
-            button2.Size = new Size(143, 44);
+            button2.Size = new Size(125, 33);
             button2.TabIndex = 5;
             button2.Text = "DESCIFRAR";
             button2.UseVisualStyleBackColor = true;
@@ -104,39 +100,37 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(204, 391);
-            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Location = new Point(178, 293);
             button3.Name = "button3";
-            button3.Size = new Size(143, 44);
+            button3.Size = new Size(125, 33);
             button3.TabIndex = 6;
             button3.Text = "VOLVER";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(14, 242);
+            label3.Location = new Point(12, 182);
             label3.Name = "label3";
-            label3.Size = new Size(168, 28);
+            label3.Size = new Size(139, 21);
             label3.TabIndex = 10;
             label3.Text = "PALABRA CLAVE";
             // 
             // txtEncryptionKey
             // 
-            txtEncryptionKey.Location = new Point(42, 298);
-            txtEncryptionKey.Margin = new Padding(3, 4, 3, 4);
+            txtEncryptionKey.Location = new Point(37, 224);
             txtEncryptionKey.Name = "txtEncryptionKey";
-            txtEncryptionKey.Size = new Size(233, 27);
+            txtEncryptionKey.Size = new Size(204, 23);
             txtEncryptionKey.TabIndex = 11;
             // 
             // btnSave
             // 
             btnSave.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSave.Location = new Point(55, 391);
-            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Location = new Point(48, 293);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(143, 44);
+            btnSave.Size = new Size(125, 33);
             btnSave.TabIndex = 12;
             btnSave.Text = "GUARDAR";
             btnSave.UseVisualStyleBackColor = true;
@@ -144,9 +138,9 @@
             // 
             // TransSimple
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(605, 451);
+            ClientSize = new Size(529, 338);
             Controls.Add(btnSave);
             Controls.Add(txtEncryptionKey);
             Controls.Add(label3);
@@ -157,7 +151,6 @@
             Controls.Add(txtOriginal);
             Controls.Add(label1);
             Controls.Add(btnEncrypt);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "TransSimple";
             Text = "TransSimple";
             Load += TransSimple_Load;

@@ -61,5 +61,10 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
             DescifrarSimple descifrarSimple = new DescifrarSimple();
             descifrarSimple.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
