@@ -12,7 +12,20 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(contenido))
+                {
+                    Console.WriteLine("El contenido está vacío. No se puede guardar el archivo.");
+                    return false;
+                }
+
+                if (string.IsNullOrWhiteSpace(nombreArchivo))
+                {
+                    Console.WriteLine("Nombre de archivo no válido. No se puede guardar el archivo.");
+                    return false;
+                }
+
                 File.WriteAllText(nombreArchivo, contenido);
+                Console.WriteLine("El archivo se guardó exitosamente.");
                 return true;
             }
             catch (Exception ex)
@@ -26,15 +39,21 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         {
             try
             {
-                if (File.Exists(nombreArchivo))
+                if (string.IsNullOrWhiteSpace(nombreArchivo))
                 {
-                    return File.ReadAllText(nombreArchivo);
+                    Console.WriteLine("Nombre de archivo no válido. No se puede abrir el archivo.");
+                    return string.Empty;
                 }
-                else
+
+                if (!File.Exists(nombreArchivo))
                 {
                     Console.WriteLine("El archivo no existe.");
                     return string.Empty;
                 }
+
+                string fileContent = File.ReadAllText(nombreArchivo);
+                Console.WriteLine("El archivo se abrió exitosamente.");
+                return fileContent;
             }
             catch (Exception ex)
             {
