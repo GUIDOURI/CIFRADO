@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRIPTOGRAFIA_CesarClave_simple_doble
 {
-    public class TranspositionCipher
+    public static class TranspositionCipher
     {
         public static string Encrypt(string message, string key)
         {
@@ -87,4 +87,5 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
             return decryptedMessage.ToString().Trim(); // Recortar los espacios finales si los hubiera
         }
     }
+
 }
