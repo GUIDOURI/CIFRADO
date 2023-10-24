@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRIPTOGRAFIA_CesarClave_simple_doble
 {
-    internal class GuardarAbrirTXT
+    public class GuardarAbrirTXT
     {
         public static bool GuardarComoTexto(string contenido, string nombreArchivo)
         {
