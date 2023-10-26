@@ -100,6 +100,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(630, 374);
             Controls.Add(txt_MensajeCifrado);
             Controls.Add(txt_Mensaje);

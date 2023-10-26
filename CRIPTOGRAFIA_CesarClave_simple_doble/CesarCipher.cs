@@ -12,81 +12,72 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
 
         public CesarCipher(string keyword)
         {
-            this.keyword = keyword;
+            // Aseguramos que la palabra clave esté en minúsculas.
+            this.keyword = keyword.ToLower(); 
         }
 
-        // Método para cifrar un texto utilizando el cifrado Cesar con palabra clave
-        public string Encrypt(string text)
+        public string Cifrar(string mensaje)
         {
-            string encryptedText = "";
+            StringBuilder cifrado = new StringBuilder();
             int keywordIndex = 0;
 
-            // Recorremos cada caracter del texto
-            foreach (char c in text)
+            foreach (char caracter in mensaje)
             {
-                // Obtenemos el desplazamiento de la letra de la palabra clave correspondiente
-                int keywordOffset = keyword[keywordIndex] - 'a';
-
-                // Ciframos el caracter sumando el desplazamiento
-                char encryptedChar = (char)(c + keywordOffset);
-
-                // Si el caracter cifrado excede el rango de letras minúsculas, lo ajustamos
-                if (encryptedChar > 'z')
+                if (char.IsLetter(caracter))
                 {
-                    encryptedChar = (char)(encryptedChar - 26);
+                    char inicio = char.IsUpper(caracter) ? 'A' : 'a';
+                    char caracterClave = keyword[keywordIndex];
+
+                    int desplazamiento = caracterClave - 'a';
+                    char caracterCifrado = (char)(inicio + (caracter - inicio + desplazamiento) % 26);
+
+                    cifrado.Append(caracterCifrado);
+
+                    keywordIndex++;
+                    if (keywordIndex == keyword.Length)
+                    {
+                        keywordIndex = 0;
+                    }
                 }
-
-                // Agregamos el caracter cifrado a la cadena resultante
-                encryptedText += encryptedChar;
-
-                // Incrementamos el índice de la palabra clave
-                keywordIndex++;
-
-                // Si llegamos al final de la palabra clave, volvemos al inicio
-                if (keywordIndex == keyword.Length)
+                else
                 {
-                    keywordIndex = 0;
+                    cifrado.Append(caracter);
                 }
             }
 
-            return encryptedText;
+            return cifrado.ToString();
         }
 
-        // Método para descifrar un texto cifrado utilizando el cifrado Cesar con palabra clave
-        public string Decrypt(string encryptedText)
+        public string Descifrar(string textoCifrado)
         {
-            string decryptedText = "";
+            StringBuilder descifrado = new StringBuilder();
             int keywordIndex = 0;
 
-            // Recorremos cada caracter del texto cifrado
-            foreach (char c in encryptedText)
+            foreach (char caracter in textoCifrado)
             {
-                // Obtenemos el desplazamiento de la letra de la palabra clave correspondiente
-                int keywordOffset = keyword[keywordIndex] - 'a';
-
-                // Desciframos el caracter restando el desplazamiento
-                char decryptedChar = (char)(c - keywordOffset);
-
-                // Si el caracter descifrado está antes de 'a', lo ajustamos
-                if (decryptedChar < 'a')
+                if (char.IsLetter(caracter))
                 {
-                    decryptedChar = (char)(decryptedChar + 26);
+                    char inicio = char.IsUpper(caracter) ? 'A' : 'a';
+                    char caracterClave = keyword[keywordIndex];
+
+                    int desplazamiento = caracterClave - 'a';
+                    char caracterDescifrado = (char)(inicio + (caracter - inicio - desplazamiento + 26) % 26);
+
+                    descifrado.Append(caracterDescifrado);
+
+                    keywordIndex++;
+                    if (keywordIndex == keyword.Length)
+                    {
+                        keywordIndex = 0;
+                    }
                 }
-
-                // Agregamos el caracter descifrado a la cadena resultante
-                decryptedText += decryptedChar;
-
-                // Incrementamos el índice de la palabra clave
-                keywordIndex++;
-
-                // Si llegamos al final de la palabra clave, volvemos al inicio
-                if (keywordIndex == keyword.Length)
+                else
                 {
-                    keywordIndex = 0;
+                    descifrado.Append(caracter);
                 }
             }
-            return decryptedText;
-        }
 
+            return descifrado.ToString();
+        }
     }
 }

@@ -57,6 +57,7 @@
             button3.TabIndex = 6;
             button3.Text = "Cifrado Del Cesar por Palabra Clave";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 

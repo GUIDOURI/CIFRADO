@@ -41,14 +41,19 @@
             button1 = new Button();
             button3 = new Button();
             openFileDialog1 = new OpenFileDialog();
+            button4 = new Button();
+            openFileDialog2 = new OpenFileDialog();
+            btnDecrypt = new Button();
+            button5 = new Button();
+            button6 = new Button();
             SuspendLayout();
             // 
             // btnEncrypt
             // 
             btnEncrypt.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEncrypt.Location = new Point(285, 192);
+            btnEncrypt.Location = new Point(406, 21);
             btnEncrypt.Name = "btnEncrypt";
-            btnEncrypt.Size = new Size(96, 41);
+            btnEncrypt.Size = new Size(88, 36);
             btnEncrypt.TabIndex = 0;
             btnEncrypt.Text = "CIFRAR";
             btnEncrypt.UseVisualStyleBackColor = true;
@@ -83,7 +88,7 @@
             // 
             // txtEncrypted
             // 
-            txtEncrypted.Location = new Point(73, 139);
+            txtEncrypted.Location = new Point(76, 146);
             txtEncrypted.Name = "txtEncrypted";
             txtEncrypted.Size = new Size(388, 23);
             txtEncrypted.TabIndex = 4;
@@ -130,9 +135,9 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(398, 192);
+            button1.Location = new Point(406, 63);
             button1.Name = "button1";
-            button1.Size = new Size(96, 41);
+            button1.Size = new Size(92, 36);
             button1.TabIndex = 13;
             button1.Text = "CIFRAR 2";
             button1.UseVisualStyleBackColor = true;
@@ -141,9 +146,9 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(331, 246);
+            button3.Location = new Point(406, 105);
             button3.Name = "button3";
-            button3.Size = new Size(96, 41);
+            button3.Size = new Size(95, 35);
             button3.TabIndex = 14;
             button3.Text = "CIFRAR 3";
             button3.UseVisualStyleBackColor = true;
@@ -152,11 +157,60 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // button4
+            // 
+            button4.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Location = new Point(360, 310);
+            button4.Name = "button4";
+            button4.Size = new Size(125, 33);
+            button4.TabIndex = 15;
+            button4.Text = "BUSCAR";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog2
+            // 
+            openFileDialog2.FileName = "openFileDialog2";
+            // 
+            // btnDecrypt
+            // 
+            btnDecrypt.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnDecrypt.Location = new Point(285, 200);
+            btnDecrypt.Name = "btnDecrypt";
+            btnDecrypt.Size = new Size(115, 32);
+            btnDecrypt.TabIndex = 16;
+            btnDecrypt.Text = "DESCIFRAR";
+            btnDecrypt.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.Location = new Point(406, 200);
+            button5.Name = "button5";
+            button5.Size = new Size(123, 32);
+            button5.TabIndex = 17;
+            button5.Text = "DESCIFRAR 2";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button6.Location = new Point(330, 238);
+            button6.Name = "button6";
+            button6.Size = new Size(122, 32);
+            button6.TabIndex = 18;
+            button6.Text = "DESCIFRAR 3";
+            button6.UseVisualStyleBackColor = true;
+            // 
             // TransSimple
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(546, 389);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(btnDecrypt);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button1);
             Controls.Add(btnSave);
@@ -190,5 +244,10 @@
         private Button button1;
         private Button button3;
         private OpenFileDialog openFileDialog1;
+        private Button button4;
+        private OpenFileDialog openFileDialog2;
+        private Button btnDecrypt;
+        private Button button5;
+        private Button button6;
     }
 }
