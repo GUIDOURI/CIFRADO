@@ -128,5 +128,78 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
             return int.TryParse(input, out _);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFile = openFileDialog.FileName;
+                    string fileContent = GuardarAbrirTXT.AbrirComoTexto(selectedFile);
+
+                    if (!string.IsNullOrEmpty(fileContent))
+                    {
+                        txtOriginal.Text = fileContent;
+                    }
+                }
+            }
+        }
+
+        private void btnDecrypt_Click(object sender, EventArgs e)
+        {
+            string cipherText = txtOriginal.Text;
+            string decryptionKey = txtEncrypted.Text;
+
+            if (string.IsNullOrEmpty(cipherText) || string.IsNullOrEmpty(decryptionKey))
+            {
+                MessageBox.Show("Por favor, ingrese el mensaje cifrado y la clave de descifrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                string decryptedMessage = TranspositionCipher.Decrypt(cipherText, decryptionKey);
+                txtEncrypted.Text = decryptedMessage;
+                MessageBox.Show("El mensaje se descifró correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo descifrar el mensaje. Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string cipherText = txtOriginal.Text;
+            string decryptionKey = txtEncrypted.Text;
+
+            // Validar que la clave de descifrado solo contenga números
+            if (!string.IsNullOrWhiteSpace(decryptionKey) && decryptionKey.All(char.IsDigit))
+            {
+                if (string.IsNullOrWhiteSpace(cipherText))
+                {
+                    MessageBox.Show("Ingresa un mensaje cifrado válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string decryptedMessage = TranspositionCipher.Decrypt2(cipherText, decryptionKey);
+
+                if (decryptedMessage.StartsWith("Error:"))
+                {
+                    MessageBox.Show("Ocurrió un error durante el descifrado. Asegúrate de usar la clave correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    txtEncrypted.Text = decryptedMessage.Replace(" ", ""); // Elimina los espacios
+                }
+            }
+            else
+            {
+                MessageBox.Show("La clave de descifrado debe contener solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

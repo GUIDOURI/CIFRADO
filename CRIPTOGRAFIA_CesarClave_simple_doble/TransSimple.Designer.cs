@@ -166,6 +166,7 @@
             button4.TabIndex = 15;
             button4.Text = "BUSCAR";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // openFileDialog2
             // 
@@ -180,6 +181,7 @@
             btnDecrypt.TabIndex = 16;
             btnDecrypt.Text = "DESCIFRAR";
             btnDecrypt.UseVisualStyleBackColor = true;
+            btnDecrypt.Click += btnDecrypt_Click;
             // 
             // button5
             // 
@@ -190,6 +192,7 @@
             button5.TabIndex = 17;
             button5.Text = "DESCIFRAR 2";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
