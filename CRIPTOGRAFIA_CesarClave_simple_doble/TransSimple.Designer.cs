@@ -33,10 +33,9 @@
             txtOriginal = new TextBox();
             label2 = new Label();
             txtEncrypted = new TextBox();
-            button2 = new Button();
             saveFileDialog1 = new SaveFileDialog();
             label3 = new Label();
-            txtEncryptionKey = new TextBox();
+            txtEncryptionClave = new TextBox();
             btnSave = new Button();
             button1 = new Button();
             button3 = new Button();
@@ -93,17 +92,6 @@
             txtEncrypted.Size = new Size(388, 23);
             txtEncrypted.TabIndex = 4;
             // 
-            // button2
-            // 
-            button2.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(213, 310);
-            button2.Name = "button2";
-            button2.Size = new Size(125, 33);
-            button2.TabIndex = 5;
-            button2.Text = "DESCIFRAR";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -114,12 +102,13 @@
             label3.TabIndex = 10;
             label3.Text = "PALABRA CLAVE";
             // 
-            // txtEncryptionKey
+            // txtEncryptionClave
             // 
-            txtEncryptionKey.Location = new Point(37, 224);
-            txtEncryptionKey.Name = "txtEncryptionKey";
-            txtEncryptionKey.Size = new Size(204, 23);
-            txtEncryptionKey.TabIndex = 11;
+            txtEncryptionClave.Location = new Point(37, 224);
+            txtEncryptionClave.Name = "txtEncryptionClave";
+            txtEncryptionClave.Size = new Size(204, 23);
+            txtEncryptionClave.TabIndex = 11;
+            txtEncryptionClave.TextChanged += txtEncryptionKey_TextChanged;
             // 
             // btnSave
             // 
@@ -152,6 +141,7 @@
             button3.TabIndex = 14;
             button3.Text = "CIFRAR 3";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click_1;
             // 
             // openFileDialog1
             // 
@@ -160,7 +150,7 @@
             // button4
             // 
             button4.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(360, 310);
+            button4.Location = new Point(275, 310);
             button4.Name = "button4";
             button4.Size = new Size(125, 33);
             button4.TabIndex = 15;
@@ -203,13 +193,15 @@
             button6.TabIndex = 18;
             button6.Text = "DESCIFRAR 3";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // TransSimple
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(192, 192, 255);
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(546, 389);
+            ControlBox = false;
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(btnDecrypt);
@@ -217,14 +209,14 @@
             Controls.Add(button3);
             Controls.Add(button1);
             Controls.Add(btnSave);
-            Controls.Add(txtEncryptionKey);
+            Controls.Add(txtEncryptionClave);
             Controls.Add(label3);
-            Controls.Add(button2);
             Controls.Add(txtEncrypted);
             Controls.Add(label2);
             Controls.Add(txtOriginal);
             Controls.Add(label1);
             Controls.Add(btnEncrypt);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "TransSimple";
             Text = "TransSimple";
             Load += TransSimple_Load;
@@ -239,10 +231,9 @@
         private TextBox txtOriginal;
         private Label label2;
         private TextBox txtEncrypted;
-        private Button button2;
         private SaveFileDialog saveFileDialog1;
         private Label label3;
-        private TextBox txtEncryptionKey;
+        private TextBox txtEncryptionClave;
         private Button btnSave;
         private Button button1;
         private Button button3;

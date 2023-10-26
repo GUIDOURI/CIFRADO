@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Criptografia;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -190,6 +191,7 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
             }
         }
 
+        
 
 
     }

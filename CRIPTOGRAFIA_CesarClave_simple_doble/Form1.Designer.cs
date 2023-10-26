@@ -38,7 +38,7 @@
             // 
             // panelMenu
             // 
-            panelMenu.BackColor = Color.FromArgb(0, 192, 192);
+            panelMenu.BackColor = Color.Black;
             panelMenu.Controls.Add(button3);
             panelMenu.Controls.Add(button2);
             panelMenu.Controls.Add(button1);
@@ -50,35 +50,46 @@
             // 
             // button3
             // 
+            button3.BackColor = Color.FromArgb(0, 192, 0);
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             button3.Location = new Point(0, 266);
             button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
             button3.Size = new Size(225, 63);
             button3.TabIndex = 6;
             button3.Text = "Cifrado Del Cesar por Palabra Clave";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.FromArgb(0, 192, 0);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             button2.Location = new Point(0, 185);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(225, 63);
             button2.TabIndex = 5;
             button2.Text = "Transposicion Doble";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(0, 192, 0);
+            button1.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(0, 105);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(225, 63);
             button1.TabIndex = 4;
             button1.Text = "Transposicion Simple";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panelContenedor

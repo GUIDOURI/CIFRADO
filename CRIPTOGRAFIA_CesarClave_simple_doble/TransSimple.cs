@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Criptografia;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -51,7 +52,7 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         private void btnEncrypt_Click_1(object sender, EventArgs e)
         {
             string message = txtOriginal.Text;
-            string encryptionKey = txtEncryptionKey.Text;
+            string encryptionKey = txtEncryptionClave.Text;
 
             // Validar que el mensaje solo contenga letras
             if (!string.IsNullOrWhiteSpace(message) && message.All(char.IsLetter))
@@ -100,7 +101,7 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
             try
             {
                 string message = txtOriginal.Text;
-                string key = txtEncryptionKey.Text;
+                string key = txtEncryptionClave.Text;
 
                 if (string.IsNullOrWhiteSpace(message) || string.IsNullOrWhiteSpace(key))
                 {
@@ -174,7 +175,7 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         private void button5_Click(object sender, EventArgs e)
         {
             string cipherText = txtOriginal.Text;
-            string decryptionKey = txtEncrypted.Text;
+            string decryptionKey = txtEncryptionClave.Text;
 
             // Validar que la clave de descifrado solo contenga números
             if (!string.IsNullOrWhiteSpace(decryptionKey) && decryptionKey.All(char.IsDigit))
@@ -199,6 +200,40 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
             else
             {
                 MessageBox.Show("La clave de descifrado debe contener solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtEncryptionKey_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            TransposicionDoble transposicionDoble = new TransposicionDoble();
+
+            if (string.IsNullOrEmpty(txtOriginal.Text))
+            {
+                MessageBox.Show("Por favor, ingrese el mensaje a Encriptar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+
+            }
+
+            try
+            {
+                string mensajeCifrado = transposicionDoble.Cifrar(txtOriginal.Text.Replace(" ", ""));
+
+                txtEncrypted.Text = mensajeCifrado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo Encriptar el mensaje. Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
