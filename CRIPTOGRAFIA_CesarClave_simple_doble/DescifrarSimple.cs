@@ -67,17 +67,37 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
+            string cipherText = txtCipherText.Text;
+            string decryptionKey = txtDecryptionKey.Text;
+
+            // Validar que la clave de descifrado solo contenga números
+            if (!string.IsNullOrWhiteSpace(decryptionKey) && decryptionKey.All(char.IsDigit))
             {
-                string cipherText = txtCipherText.Text;
-                string key = txtDecryptionKey.Text;
-                string decryptedMessage = TranspositionCipher.Decrypt2(cipherText, key);
-                txtDecrypted.Text = decryptedMessage;
+                if (string.IsNullOrWhiteSpace(cipherText))
+                {
+                    MessageBox.Show("Ingresa un mensaje cifrado válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string decryptedMessage = TranspositionCipher.Decrypt2(cipherText, decryptionKey);
+
+                if (decryptedMessage.StartsWith("Error:"))
+                {
+                    MessageBox.Show("Ocurrió un error durante el descifrado. Asegúrate de usar la clave correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    txtDecrypted.Text = decryptedMessage.Replace(" ", ""); // Elimina los espacios
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error al descifrar: " + ex.Message);
+                MessageBox.Show("La clave de descifrado debe contener solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
+
+
+
     }
 }

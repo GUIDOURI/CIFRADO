@@ -21,6 +21,9 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         private void button2_Click(object sender, EventArgs e)
         {
             TransDoble transDoble = new TransDoble();
+            transDoble.TopLevel = false;
+            panelContenedor.Controls.Add((transDoble));
+            transDoble.Dock = DockStyle.Fill;
             transDoble.Show();
         }
     }

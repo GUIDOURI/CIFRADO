@@ -91,10 +91,8 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         {
             try
             {
-                // Convierte la clave numérica en un arreglo de enteros
-                int[] columnOrder = key.Select(c => int.Parse(c.ToString())).ToArray();
-                int keyLength = columnOrder.Length;
                 int messageLength = message.Length;
+                int keyLength = key.Length;
 
                 // Calcula el número de filas necesario en la matriz de cifrado
                 int numRows = (int)Math.Ceiling((double)messageLength / keyLength);
@@ -104,10 +102,9 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
 
                 // Llena la matriz con el mensaje original
                 int messageIndex = 0;
-                for (int col = 0; col < keyLength; col++)
+                for (int row = 0; row < numRows; row++)
                 {
-                    int order = columnOrder[col] - 1; // Resta 1 para obtener el índice correcto
-                    for (int row = 0; row < numRows; row++)
+                    for (int col = 0; col < keyLength; col++)
                     {
                         if (messageIndex < messageLength)
                         {
@@ -123,47 +120,42 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
 
                 // Construye el mensaje cifrado
                 StringBuilder encryptedMessage = new StringBuilder();
-                for (int row = 0; row < numRows; row++)
+                for (int col = 0; col < keyLength; col++)
                 {
-                    for (int col = 0; col < keyLength; col++)
+                    int order = int.Parse(key[col].ToString());
+                    for (int row = 0; row < numRows; row++)
                     {
-                        encryptedMessage.Append(matrix[row, col]);
+                        encryptedMessage.Append(matrix[row, order - 1]);
                     }
                 }
 
-                return encryptedMessage.ToString().Replace(" ", ""); // Elimina los espacios
+                return encryptedMessage.ToString();
             }
             catch (Exception ex)
             {
-                // Manejo de excepciones
                 return "Error: " + ex.Message;
             }
         }
-
 
 
         public static string Decrypt2(string cipherText, string key)
         {
             try
             {
-                // Convierte la clave numérica en un arreglo de enteros
                 int[] columnOrder = key.Select(c => int.Parse(c.ToString())).ToArray();
                 int keyLength = columnOrder.Length;
                 int cipherTextLength = cipherText.Length;
 
-                // Calcula el número de filas necesario en la matriz de descifrado
                 int numRows = (int)Math.Ceiling((double)cipherTextLength / keyLength);
-
-                // Crea una matriz para almacenar los caracteres del mensaje cifrado
                 char[,] matrix = new char[numRows, keyLength];
-
-                // Llena la matriz con el mensaje cifrado
                 int cipherIndex = 0;
-                for (int row = 0; row < numRows; row++)
+
+                for (int col = 0; col < keyLength; col++)
                 {
-                    for (int col = 0; col < keyLength; col++)
+                    int order = columnOrder[col] - 1;
+
+                    for (int row = 0; row < numRows; row++)
                     {
-                        int order = columnOrder[col] - 1;
                         if (cipherIndex < cipherTextLength)
                         {
                             matrix[row, order] = cipherText[cipherIndex];
@@ -176,25 +168,27 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
                     }
                 }
 
-                // Construye el mensaje descifrado
                 StringBuilder decryptedMessage = new StringBuilder();
-                for (int col = 0; col < keyLength; col++)
+
+                for (int row = 0; row < numRows; row++)
                 {
-                    for (int row = 0; row < numRows; row++)
+                    for (int col = 0; col < keyLength; col++)
                     {
-                        decryptedMessage.Append(matrix[row, col]);
+                        char c = matrix[row, col];
+                        if (c != ' ')
+                        {
+                            decryptedMessage.Append(c);
+                        }
                     }
                 }
 
-                return decryptedMessage.ToString().Replace(" ", ""); // Elimina los espacios
+                return decryptedMessage.ToString();
             }
             catch (Exception ex)
             {
-                // Manejo de excepciones
                 return "Error: " + ex.Message;
             }
         }
-
 
 
 

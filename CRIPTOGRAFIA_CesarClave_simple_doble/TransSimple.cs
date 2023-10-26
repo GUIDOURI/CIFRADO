@@ -51,15 +51,43 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         private void btnEncrypt_Click_1(object sender, EventArgs e)
         {
             string message = txtOriginal.Text;
-            string key = txtEncryptionKey.Text;
-            string encryptedMessage = TranspositionCipher.Encrypt(message, key);
-            txtEncrypted.Text = encryptedMessage;
+            string encryptionKey = txtEncryptionKey.Text;
+
+            // Validar que el mensaje solo contenga letras
+            if (!string.IsNullOrWhiteSpace(message) && message.All(char.IsLetter))
+            {
+                if (string.IsNullOrWhiteSpace(encryptionKey))
+                {
+                    MessageBox.Show("Ingresa una clave de cifrado válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string encryptedMessage = TranspositionCipher.Encrypt2(message, encryptionKey);
+
+                if (encryptedMessage.StartsWith("Error:"))
+                {
+                    MessageBox.Show("Ocurrió un error durante el cifrado. Asegúrate de usar la clave correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    txtEncrypted.Text = encryptedMessage;
+                }
+            }
+            else
+            {
+                MessageBox.Show("El mensaje a cifrar debe contener solo letras.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             DescifrarSimple descifrarSimple = new DescifrarSimple();
+            descifrarSimple.Location = this.Location;
+            descifrarSimple.Size = this.Size;
             descifrarSimple.Show();
+            this.Close();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -73,13 +101,32 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
             {
                 string message = txtOriginal.Text;
                 string key = txtEncryptionKey.Text;
+
+                if (string.IsNullOrWhiteSpace(message) || string.IsNullOrWhiteSpace(key))
+                {
+                    MessageBox.Show("Ingresa un mensaje y una clave válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!IsNumeric(key))
+                {
+                    MessageBox.Show("La clave debe contener solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 string encryptedMessage = TranspositionCipher.Encrypt2(message, key);
                 txtEncrypted.Text = encryptedMessage;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cifrar: " + ex.Message);
+                MessageBox.Show("Error al cifrar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private bool IsNumeric(string input)
+        {
+            return int.TryParse(input, out _);
+        }
+
     }
 }

@@ -40,6 +40,7 @@
             btnSave = new Button();
             button1 = new Button();
             button3 = new Button();
+            openFileDialog1 = new OpenFileDialog();
             SuspendLayout();
             // 
             // btnEncrypt
@@ -147,6 +148,10 @@
             button3.Text = "CIFRAR 3";
             button3.UseVisualStyleBackColor = true;
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
             // TransSimple
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -184,5 +189,6 @@
         private Button btnSave;
         private Button button1;
         private Button button3;
+        private OpenFileDialog openFileDialog1;
     }
 }
