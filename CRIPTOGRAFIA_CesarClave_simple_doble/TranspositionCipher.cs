@@ -86,6 +86,111 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
 
             return decryptedMessage.ToString().Trim(); // Recortar los espacios finales si los hubiera
         }
+
+        public static string Encrypt2(string message, string key)
+        {
+            try
+            {
+                // Convierte la clave numérica en un arreglo de enteros
+                int[] columnOrder = key.Select(c => int.Parse(c.ToString())).ToArray();
+                int keyLength = columnOrder.Length;
+                int messageLength = message.Length;
+
+                // Calcula el número de filas necesario en la matriz de cifrado
+                int numRows = (int)Math.Ceiling((double)messageLength / keyLength);
+
+                // Crea una matriz para almacenar los caracteres del mensaje
+                char[,] matrix = new char[numRows, keyLength];
+
+                // Llena la matriz con el mensaje original
+                int messageIndex = 0;
+                for (int col = 0; col < keyLength; col++)
+                {
+                    int order = columnOrder[col] - 1; // Resta 1 para obtener el índice correcto
+                    for (int row = 0; row < numRows; row++)
+                    {
+                        if (messageIndex < messageLength)
+                        {
+                            matrix[row, col] = message[messageIndex];
+                            messageIndex++;
+                        }
+                        else
+                        {
+                            matrix[row, col] = ' '; // Rellena con espacios si es necesario
+                        }
+                    }
+                }
+
+                // Construye el mensaje cifrado
+                StringBuilder encryptedMessage = new StringBuilder();
+                for (int row = 0; row < numRows; row++)
+                {
+                    for (int col = 0; col < keyLength; col++)
+                    {
+                        encryptedMessage.Append(matrix[row, col]);
+                    }
+                }
+
+                return encryptedMessage.ToString().Replace(" ", ""); // Elimina los espacios
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                return "Error: " + ex.Message;
+            }
+        }
+
+
+
+        public static string Decrypt2(string cipherText, string key)
+        {
+            try
+            {
+                // Convierte la clave numérica en un arreglo de enteros
+                int[] columnOrder = key.Select(c => int.Parse(c.ToString())).ToArray();
+                int keyLength = columnOrder.Length;
+                int cipherTextLength = cipherText.Length;
+
+                // Calcula el número de filas necesario en la matriz de descifrado
+                int numRows = (int)Math.Ceiling((double)cipherTextLength / keyLength);
+
+                // Crea una matriz para almacenar los caracteres del mensaje cifrado organizado por la clave numérica
+                char[,] matrix = new char[numRows, keyLength];
+
+                // Llena la matriz con el mensaje cifrado
+                int cipherIndex = 0;
+                for (int col = 0; col < keyLength; col++)
+                {
+                    int order = columnOrder[col];
+                    for (int row = 0; row < numRows; row++)
+                    {
+                        matrix[row, order - 1] = cipherText[cipherIndex];
+                        cipherIndex++;
+                    }
+                }
+
+                // Construye el mensaje descifrado
+                StringBuilder decryptedMessage = new StringBuilder();
+                for (int row = 0; row < numRows; row++)
+                {
+                    for (int col = 0; col < keyLength; col++)
+                    {
+                        decryptedMessage.Append(matrix[row, col]);
+                    }
+                }
+
+                return decryptedMessage.ToString().Trim(); // Recorta los espacios finales si los hubiera
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                return "Error: " + ex.Message;
+            }
+        }
+
+
+
+
     }
 
 }

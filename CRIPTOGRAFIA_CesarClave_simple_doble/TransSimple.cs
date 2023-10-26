@@ -66,5 +66,20 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string message = txtOriginal.Text;
+                string key = txtEncryptionKey.Text;
+                string encryptedMessage = TranspositionCipher.Encrypt2(message, key);
+                txtEncrypted.Text = encryptedMessage;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cifrar: " + ex.Message);
+            }
+        }
     }
 }

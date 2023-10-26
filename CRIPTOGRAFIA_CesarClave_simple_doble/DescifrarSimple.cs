@@ -64,5 +64,20 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
                 MessageBox.Show("No se pudo descifrar el mensaje. Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string cipherText = txtCipherText.Text;
+                string key = txtDecryptionKey.Text;
+                string decryptedMessage = TranspositionCipher.Decrypt2(cipherText, key);
+                txtDecrypted.Text = decryptedMessage;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al descifrar: " + ex.Message);
+            }
+        }
     }
 }
