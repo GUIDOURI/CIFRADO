@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -47,6 +48,13 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
                     return;
                 }
 
+                // Validar que textoAEncriptar solo contenga letras
+                if (!Regex.IsMatch(textoAEncriptar, "^[a-zA-Z]+$"))
+                {
+                    MessageBox.Show("El texto a cifrar solo debe contener letras.");
+                    return;
+                }
+
                 CesarCipher cifrador = new CesarCipher(palabraClave);
                 string textoCifrado = cifrador.Cifrar(textoAEncriptar);
                 txtTextoCifrado.Text = textoCifrado;
@@ -56,40 +64,10 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
                 MessageBox.Show("Ha ocurrido un error: " + ex.Message);
             }
         }
+
         private void btnCifrar_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                string palabraClave = txtClave.Text;  // Obtén la palabra clave del TextBox txtClave.
-
-                if (string.IsNullOrEmpty(palabraClave))
-                {
-                    MessageBox.Show("Ingrese una palabra clave.");
-                    return;
-                }
-
-                if (!string.IsNullOrEmpty(textoOriginal))
-                {
-                    // Crea una instancia de la clase CesarCipher con la palabra clave.
-                    CesarCipher cifrador = new CesarCipher(palabraClave);
-
-                    // Cifra el texto original.
-                    string textoCifrado = cifrador.Cifrar(textoOriginal);
-
-                    // Muestra el texto cifrado en el TextBox txtCifrar.
-                    txtTextoCifrado.Text = textoCifrado;
-                }
-                else
-                {
-                    MessageBox.Show("No hay texto cargado para cifrar. Utiliza el botón 'Cargar' para cargar un archivo o ingresa texto manualmente.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha ocurrido un error: " + ex.Message);
-            }
-            */
+          
             CifrarTexto();
         }
 
