@@ -154,32 +154,39 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
                 // Calcula el número de filas necesario en la matriz de descifrado
                 int numRows = (int)Math.Ceiling((double)cipherTextLength / keyLength);
 
-                // Crea una matriz para almacenar los caracteres del mensaje cifrado organizado por la clave numérica
+                // Crea una matriz para almacenar los caracteres del mensaje cifrado
                 char[,] matrix = new char[numRows, keyLength];
 
                 // Llena la matriz con el mensaje cifrado
                 int cipherIndex = 0;
-                for (int col = 0; col < keyLength; col++)
+                for (int row = 0; row < numRows; row++)
                 {
-                    int order = columnOrder[col];
-                    for (int row = 0; row < numRows; row++)
+                    for (int col = 0; col < keyLength; col++)
                     {
-                        matrix[row, order - 1] = cipherText[cipherIndex];
-                        cipherIndex++;
+                        int order = columnOrder[col] - 1;
+                        if (cipherIndex < cipherTextLength)
+                        {
+                            matrix[row, order] = cipherText[cipherIndex];
+                            cipherIndex++;
+                        }
+                        else
+                        {
+                            matrix[row, order] = ' ';
+                        }
                     }
                 }
 
                 // Construye el mensaje descifrado
                 StringBuilder decryptedMessage = new StringBuilder();
-                for (int row = 0; row < numRows; row++)
+                for (int col = 0; col < keyLength; col++)
                 {
-                    for (int col = 0; col < keyLength; col++)
+                    for (int row = 0; row < numRows; row++)
                     {
                         decryptedMessage.Append(matrix[row, col]);
                     }
                 }
 
-                return decryptedMessage.ToString().Trim(); // Recorta los espacios finales si los hubiera
+                return decryptedMessage.ToString().Replace(" ", ""); // Elimina los espacios
             }
             catch (Exception ex)
             {
