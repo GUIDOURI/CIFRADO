@@ -35,5 +35,27 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble.Tests
             string result = TranspositionCipher.Decrypt(cipherText, key);
             Assert.AreEqual(expected, result);
         }
+      
+        [TestMethod()]
+        public void Encrypt2Test()
+        {
+            string message = "Hola mundo";
+            string key = "12345";
+
+           
+            string encryptedMessage = TranspositionCipher.Encrypt2(message, key);
+            Assert.AreEqual("Hmoulnad o", encryptedMessage);
+        }
+
+        [TestMethod()]
+        public void Decrypt2Test()
+        {
+            string cipherText = "Hmoulnad o";
+            string key = "12345"; 
+            
+            string decryptedMessage = TranspositionCipher.Decrypt2(cipherText, key);       
+            Assert.AreEqual("Holamundo", decryptedMessage);
+        }
     }
+
 }
