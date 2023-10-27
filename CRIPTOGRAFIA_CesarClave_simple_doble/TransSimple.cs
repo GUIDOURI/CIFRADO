@@ -83,11 +83,7 @@ namespace CRIPTOGRAFIA_CesarClave_simple_doble
         private void button2_Click(object sender, EventArgs e)
         {
 
-            DescifrarSimple descifrarSimple = new DescifrarSimple();
-            descifrarSimple.Location = this.Location;
-            descifrarSimple.Size = this.Size;
-            descifrarSimple.Show();
-            this.Close();
+           
 
         }
 
